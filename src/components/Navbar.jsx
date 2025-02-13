@@ -1,5 +1,4 @@
 import { Link } from 'react-router';
-import { useContext } from 'react';
 import { getUserContext } from '../context/UserContext';
 
 export default function Navbar() {
@@ -7,13 +6,13 @@ export default function Navbar() {
 
     const onLogout = () => {
         localStorage.removeItem('token');
-        setUser({ isAuthenticated: false, email: '' });
+        setUser({ isAuthentified: false, email: '' });
     };
 
     return (
         <nav>
             <Link to="/">Accueil</Link>
-            {user.isAuthenticated ? (
+            {user.isAuthentified ? (
                 <>
                     <Link to="/dashboard">Tableau de bord</Link>
                     <button onClick={onLogout}>Se déconnecter</button>

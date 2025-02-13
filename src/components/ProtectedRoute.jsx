@@ -12,5 +12,5 @@ export default function SecureRoute({ children }) {
         }
     }, [userContext.user.isAuthentified, navigate]);
 
-    return userContext.isAuthentified ? children : null;
+    return userContext.user.isAuthentified ? children : null;
 }

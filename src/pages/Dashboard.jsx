@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import getUserContext from '../context/UserContext';
 
 export default function Dashboard() {

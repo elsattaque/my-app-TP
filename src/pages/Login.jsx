@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import getUserContext from '../context/UserContext';
 
@@ -43,7 +43,9 @@ export default function Login() {
                                     isAuthentified: true
                                 };
                                 userContext.setUser(user);
-                                console.log(userContext.user.isAuthentified);
+                                setTimeout(() => {
+                                    console.log(userContext.user.isAuthentified);
+                                }, 100);
                                 navigate("/dashboard");
                                 break;
                             case 404:
@@ -58,7 +60,7 @@ export default function Login() {
                                 break;
                         }
                         setIsLoading(false);
-                    }, 1000);
+                    }, 3000);
                 })
                 .catch(err => console.log("Erreur:", err));
         } catch (error) {
