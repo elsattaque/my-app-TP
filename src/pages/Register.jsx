@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Spinner from '../components/Spinner';
+import { useNavigate } from 'react-router';
 
 export default function Register() {
     const [email, setEmail] = useState('');
@@ -55,7 +54,7 @@ export default function Register() {
                 <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Confirmer le mot de passe" required />
                 <button type="submit">S'inscrire</button>
             </form>
-            {isLoading && <Spinner />}
+            {isLoading && <p>Chargement...</p>}
             {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         </div>

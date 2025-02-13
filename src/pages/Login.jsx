@@ -1,7 +1,6 @@
 import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import getUserContext from '../context/UserContext';
-import Spinner from '../components/Spinner';
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -43,8 +42,9 @@ export default function Login() {
                                     email: email,
                                     isAuthentified: true
                                 };
-                                await userContext.setUser(user);
-                                navigate("/Dashboard");
+                                userContext.setUser(user);
+                                console.log(userContext.user.isAuthentified);
+                                navigate("/dashboard");
                                 break;
                             case 404:
                                 setErrorMessage("Utilisateur inconnu");
@@ -58,7 +58,7 @@ export default function Login() {
                                 break;
                         }
                         setIsLoading(false);
-                    }, 3000);
+                    }, 1000);
                 })
                 .catch(err => console.log("Erreur:", err));
         } catch (error) {
@@ -76,7 +76,7 @@ export default function Login() {
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Mot de passe" required />
                 <button type="submit">Se connecter</button>
             </form>
-            {isLoading && <Spinner />}
+            {isLoading && <p>Chargement...</p>}
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         </div>
     );

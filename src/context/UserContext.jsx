@@ -4,8 +4,8 @@ const UserContext = createContext(null);
 
 export const GetUser = ({ children }) => { 
     const [user, setUser] = useState({
-        isAuthentified: false,
-        email: ''
+        email: '',
+        isAuthentified: false
     }); 
 
     return (

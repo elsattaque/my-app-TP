@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import getUserContext from '../context/UserContext';
 import { useEffect } from "react";
 
@@ -7,10 +7,10 @@ export default function SecureRoute({ children }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!userContext.isAuthentified) {
+        if (!userContext.user.isAuthentified) {
             navigate("/login");
         }
-    }, [userContext.isAuthentified, navigate]);
+    }, [userContext.user.isAuthentified, navigate]);
 
     return userContext.isAuthentified ? children : null;
 }
